@@ -66,12 +66,14 @@ else
 			if [ $? -eq 0 ]; then
 				echo ""
 				echo "RabbitMQ Installation successfull we are going to start and enable the services"
+				rm -f /tmp/$BackupName-*.tar.gz
 				sleep 1
 				echo ""
 			else
 				echo "" 
 				echo "RabbitMQ installtion failed......."
 				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
+				rm -f /tmp/$BackupName-*.tar.gz
 				exit 1
 			fi
 			
