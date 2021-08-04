@@ -25,7 +25,7 @@ sudo apt install git -y
 ## How to Get
 ```
 
-git clone https://github.com/yousafkhamza/rabbitmq-ubuntu
+git clone https://github.com/yousafkhamza/rabbitmq-ubuntu.git
 cd rabbitmq-ubuntu
 chmod +x rabbitmq.sh
 ```
