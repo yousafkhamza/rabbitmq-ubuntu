@@ -10,8 +10,8 @@ printf "\e[1;77m\e[45m   RabbitMQ Installation Script for ubuntu Author: @yousaf
 printf "\n"
 sleep 1
 
-ubuntu=$(grep -i "ubuntu" /etc/os-release | wc -l > 2&>1; echo $?)
-rabbitmq=$(which rabbitmq-server > 2&>1; echo $?)
+ubuntu=$(grep -i "ubuntu" /etc/os-release | wc -l > 2>&1; echo $?)
+rabbitmq=$(which rabbitmq-server > 2>&1; echo $?)
 
 if [[ "$rabbitmq" -eq 0 ]]; then
 	echo "RabbitMQ is already installed on the server so please remove the same manually......."
@@ -59,7 +59,7 @@ else
 			
 	# Dependancies installed succesfully
 	# Update new repo once maybe you will get error
-	sudo apt-get update -y > 2&>1
+	sudo apt-get update -y > 2>&1
 
 	# RabbitMQ Installation from the added repository
 	sudo apt-get install -y rabbitmq-server
@@ -90,10 +90,10 @@ else
 			fi
 
 	# Service status and enable
-	status=$(sudo systemctl status rabbitmq-server > 2&>1; echo $?)
+	status=$(sudo systemctl status rabbitmq-server > 2>&1; echo $?)
 		if [[ "status" -eq 0 ]]; then
 			echo ""
-			echo " RabbitMQ Service enabling............"
+			echo "RabbitMQ Service enabling............"
 			echo ""
 			sudo rabbitmq-plugins enable rabbitmq_management
 			sleep 1
@@ -119,6 +119,7 @@ else
 			echo ""
 			echo "Installation is successfull. Please login to your RabbitMQ GUI......"
 			echo "Please use the below URL or check with net-tools like netstat netstat -ntlp"
+			rm -f erlang-solutions_1*.deb
 			ip=$(curl ifconfig.io)
 			echo ""
 			echo "http://$ip:15672/ Please check the same with admin and password."
