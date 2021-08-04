@@ -1,4 +1,4 @@
-Install RabbitMQ on Ubuntu
+Manual Installation steps RabbitMQ on Ubuntu
 ==================================================
 
 Install Erlang
