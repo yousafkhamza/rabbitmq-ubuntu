@@ -39,7 +39,7 @@ else
 			else
 				echo ""
 				echo "Your dependecy installation is failed so please go through the GitHub and iinstall the same as manual"
-				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main" 
+				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu" 
 				exit 1
 			fi
 		echo "RabbitMQ Repository adding to the repos........."
@@ -53,7 +53,7 @@ else
 			else
 				echo "" 
 				echo "Repository adding failed......."
-				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main"
+				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
 				exit 1
 			fi
 			
@@ -71,7 +71,7 @@ else
 			else
 				echo "" 
 				echo "RabbitMQ installtion failed......."
-				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main"
+				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
 				exit 1
 			fi
 			
@@ -85,7 +85,7 @@ else
 			else
 				echo "" 
 				echo "Service starting failed....... Please check server ports......."
-				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main"
+				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
 				ezit 1
 			fi
 
@@ -101,7 +101,7 @@ else
 		else
 			echo "" 
 			echo "Service enabling failed....... Please check server ports......."
-			echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main"
+			echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
 			exit 1
 		fi
 		
@@ -126,13 +126,13 @@ else
 		else
 			echo "" 
 			echo "Admin password setting is failed........."
-			echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main"
+			echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
 			exit 1
 		fi
 	else
 		echo ""
 		echo "The script is only support with ubuntu 16-20 version so you may please check the manual installation steps"
-		echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu/tree/main"
+		echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
 		exit 1
 	fi
 fi
