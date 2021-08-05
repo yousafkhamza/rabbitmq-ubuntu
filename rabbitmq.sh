@@ -42,9 +42,13 @@ else
 				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu" 
 				exit 1
 			fi
-		echo "RabbitMQ Repository adding to the repos........."
-		echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
-		wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
+
+# RabbitMQ Repository adding
+echo "RabbitMQ Repository adding to the repos........."
+echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add - <<EOF
+
+EOF
 			if [ $? -eq 0 ]; then
 				echo ""
 				echo "Repository adding successsfully.........."
@@ -65,15 +69,14 @@ else
 	sudo apt-get install -y rabbitmq-server
 			if [ $? -eq 0 ]; then
 				echo ""
-				echo "RabbitMQ Installation successfull we are going to start and enable the services"
-				rm -f /tmp/$BackupName-*.tar.gz
+				echo "RabbitMQ Installation successfull we are going to start and enable the services........."
 				sleep 1
 				echo ""
 			else
 				echo "" 
 				echo "RabbitMQ installtion failed......."
 				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
-				rm -f /tmp/$BackupName-*.tar.gz
+				rm -f erlang-solutions_*.deb
 				exit 1
 			fi
 			
@@ -88,6 +91,7 @@ else
 				echo "" 
 				echo "Service starting failed....... Please check server ports......."
 				echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
+				rm -f erlang-solutions_*.deb
 				ezit 1
 			fi
 
@@ -98,12 +102,15 @@ else
 			echo "RabbitMQ Service enabling............"
 			echo ""
 			sudo rabbitmq-plugins enable rabbitmq_management
+			rm -f erlang-solutions_*.deb
 			sleep 1
 			echo ""
 		else
 			echo "" 
 			echo "Service enabling failed....... Please check server ports......."
 			echo "Manual installation steps https://github.com/yousafkhamza/rabbitmq-ubuntu"
+			rm -f erlang-solutions_*.deb
+			echo ""
 			exit 1
 		fi
 		
@@ -121,8 +128,7 @@ else
 			echo ""
 			echo "Installation is successfull. Please login to your RabbitMQ GUI......"
 			echo "Please use the below URL or check with net-tools like netstat netstat -ntlp"
-			rm -f /tmp/$BackupName-*.tar.gz
-			ip=$(curl ifconfig.io) 
+			ip=$(curl ifconfig.io)
 			echo ""
 			echo "http://$ip:15672/ Please check the same with admin and password."
 			sleep 1
