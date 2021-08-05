@@ -126,9 +126,10 @@ EOF
 			sudo rabbitmqctl set_user_tags admin administrator
 			sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 			echo ""
+			ip=$(curl ifconfig.io)
+			echo ""
 			echo "Installation is successfull. Please login to your RabbitMQ GUI......"
 			echo "Please use the below URL or check with net-tools like netstat netstat -ntlp"
-			ip=$(curl ifconfig.io)
 			echo ""
 			echo "http://$ip:15672/ Please check the same with admin and password."
 			sleep 1
