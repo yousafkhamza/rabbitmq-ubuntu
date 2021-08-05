@@ -28,7 +28,9 @@ else
 		echo ""
 		sleep 1
 		wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
-		sudo dpkg -i erlang-solutions_1.0_all.deb 
+		sudo dpkg -i erlang-solutions_1.0_all.deb << EOF
+
+EOF
 			if [ $? -eq 0 ]; then
 				echo ""
 				echo "Dependancies installtion started and it take 5-10 minutes and it depends on your internet........"
@@ -43,12 +45,10 @@ else
 				exit 1
 			fi
 
-# RabbitMQ Repository adding
-echo "RabbitMQ Repository adding to the repos........."
-echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
-wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add - <<EOF
-
-EOF
+			# RabbitMQ Repository adding
+			echo "RabbitMQ Repository adding to the repos........."
+			echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+			wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
 			if [ $? -eq 0 ]; then
 				echo ""
 				echo "Repository adding successsfully.........."
@@ -126,10 +126,9 @@ EOF
 			sudo rabbitmqctl set_user_tags admin administrator
 			sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 			echo ""
-			ip=$(curl ifconfig.io)
-			echo ""
 			echo "Installation is successfull. Please login to your RabbitMQ GUI......"
 			echo "Please use the below URL or check with net-tools like netstat netstat -ntlp"
+			ip=$(curl ifconfig.io)
 			echo ""
 			echo "http://$ip:15672/ Please check the same with admin and password."
 			sleep 1
