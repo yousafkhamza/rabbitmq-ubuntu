@@ -13,6 +13,7 @@ sleep 1
 ubuntu=$(grep -i "ubuntu" /etc/os-release | wc -l >/dev/null 2>&1; echo $?)
 rabbitmq=$(which rabbitmq-server >/dev/null 2>&1; echo $?)
 
+# RabbitMQ is already available or not check
 if [[ "$rabbitmq" -eq 0 ]]; then
 	echo "RabbitMQ is already installed on the server so please remove the same manually......."
 	exit 1
@@ -24,13 +25,14 @@ else
 	if [ -f /etc/os-release ] && [[ "$ubuntu" -eq 0 ]]; then
 		echo ""
 		echo "Dependency ERLANG installation started........."
-		echo "If you're exited the script once you enter any values please retry the script once"
+		echo "If you're exited the script once you enter any values please retry the script once.........."
 		echo ""
 		sleep 1
+		echo "May be you got a dpkg package codename screen so please enter just okay not change any values if there shown............"
+		echo "Please be aware......................."
+		sleep 1
 		wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
-		sudo dpkg -i erlang-solutions_1.0_all.deb << EOF
-
-EOF
+		sudo dpkg -i erlang-solutions_1.0_all.deb
 			if [ $? -eq 0 ]; then
 				echo ""
 				echo "Dependancies installtion started and it take 5-10 minutes and it depends on your internet........"
