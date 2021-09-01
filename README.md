@@ -1,4 +1,4 @@
-# RabbitMQ Installation on Ubuntu
+# RabbitMQ Installation on Ubuntu..
 [![Build](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ---
